@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source: .
+    destination: /home/ubuntu/nginx-app
+
+hooks:
+  BeforeInstall:
+    - location: scripts/install_nginx.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/deploy.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/start_nginx.sh
+      timeout: 300
+      runas: root
