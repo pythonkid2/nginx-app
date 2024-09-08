@@ -536,4 +536,6 @@ Choose post-build-action as deploy an application AWS CodeDeploy
    - **Problem:** Pushed shell scripts without setting the executable permission (`+x`), causing deployment failures due to the scripts not being executable.
    - **Solution:** Identified the issue and corrected it by updating the permissions on the shell scripts to make them executable, ensuring proper execution during deployment.
 
-![image](https://github.com/user-attachments/assets/e61eb3b1-ad69-468d-aba7-7566ba9d8e6a)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e61eb3b1-ad69-468d-aba7-7566ba9d8e6a" alt="image" />
+</p>
