@@ -18,6 +18,8 @@ Setup a CI/CD pipeline using tools of your choice (or preferably the mentioned t
 
 ---
 
+# CI/CD Pipeline Setup with Jenkins, AWS EC2, and CodeDeploy 
+
 # Step 1: Create Two IAM Roles in AWS IAM
 
 ## 1. Create a Role for EC2
@@ -386,62 +388,74 @@ Choose post-build-action as deploy an application AWS CodeDeploy
 ### **1. Jenkins Build and Deployment**
 
 - **Build Process:**
-  - ![Jenkins Build Process](https://github.com/user-attachments/assets/c73ed129-e5fa-4848-ba13-a05b1d6a0865)
+
+![Jenkins Build Process](https://github.com/user-attachments/assets/c73ed129-e5fa-4848-ba13-a05b1d6a0865)
   - Jenkins build process in progress.
 
 ### **2. Deployment Started**
 
 - **Deployment Initialization:**
-  - ![Deployment Started 1](https://github.com/user-attachments/assets/76bc9aa4-5032-4fc3-8cc9-e00981a89ad2)
+
+![Deployment Started 1](https://github.com/user-attachments/assets/76bc9aa4-5032-4fc3-8cc9-e00981a89ad2)
   - Deployment has been initiated.
   
-  - ![Deployment Started 2](https://github.com/user-attachments/assets/a76c6ef1-f871-470b-83f9-951282ad6f3b)
+
+  ![Deployment Started 2](https://github.com/user-attachments/assets/a76c6ef1-f871-470b-83f9-951282ad6f3b)
   - Deployment process is underway.
 
 ### **3. Deployed with Load Balancer**
 
 - **Load Balancer Configuration:**
-  - ![Load Balancer](https://github.com/user-attachments/assets/fbe5802c-97a5-4661-8c13-314036b890d8)
+
+![Load Balancer](https://github.com/user-attachments/assets/fbe5802c-97a5-4661-8c13-314036b890d8)
   - Application deployed with a load balancer.
 
 - **Access URL:**
-  - ![Load Balancer URL](https://github.com/user-attachments/assets/b38c8661-93f2-44a8-9fd3-f60d35935fd3)
+
+![Load Balancer URL](https://github.com/user-attachments/assets/b38c8661-93f2-44a8-9fd3-f60d35935fd3)
   - Access the application via the load balancer URL: WebApp-AutoScaling-Loadbalancer-1039090491.us-east-2.elb.amazonaws.com.
 
 ### **4. Updating HTML Code**
 
 - **Updated HTML Code:**
-  - ![Updated HTML Code](https://github.com/user-attachments/assets/6a30df4a-205a-49ff-8ce8-e371dd5acd6e)
+
+![Updated HTML Code](https://github.com/user-attachments/assets/6a30df4a-205a-49ff-8ce8-e371dd5acd6e)
   - Updated HTML code for the web application.
 
 - **Code Changes:**
-  - ![Code Changes](https://github.com/user-attachments/assets/740d3595-e032-4b08-ba57-882e1350f19e)
+
+![Code Changes](https://github.com/user-attachments/assets/740d3595-e032-4b08-ba57-882e1350f19e)
   - Screenshot showing the code changes made.
 
 ### **5. Jenkins Triggered**
 
 - **Jenkins Triggered Deployment:**
-  - ![Jenkins Triggered](https://github.com/user-attachments/assets/ebca1df0-786b-4ab8-9616-d26ee70494eb)
+
+![Jenkins Triggered](https://github.com/user-attachments/assets/ebca1df0-786b-4ab8-9616-d26ee70494eb)
   - Jenkins triggered deployment after code changes.
 
 ### **6. Deployment Started**
 
 - **Deployment Process:**
-  - ![Deployment Started](https://github.com/user-attachments/assets/212779db-1da1-4225-be25-46fb2e8b6f08)
+
+![Deployment Started](https://github.com/user-attachments/assets/212779db-1da1-4225-be25-46fb2e8b6f08)
   - Deployment process has started.
 
 ### **7. Deployment Events**
 
 - **Deployment Events:**
-  - ![Deployment Events](https://github.com/user-attachments/assets/6ece3926-3cba-46d7-9eed-f1c2b6818e7f)
+
+![Deployment Events](https://github.com/user-attachments/assets/6ece3926-3cba-46d7-9eed-f1c2b6818e7f)
   - Deployment events showing progress and status.
 
 ### **8. New Page Deployed**
 
 - **Deployed Web Page:**
-  - ![New Page Deployed](https://github.com/user-attachments/assets/9dcdc967-8e1d-4574-8c5c-677419869dfc)
+
+ ![New Page Deployed](https://github.com/user-attachments/assets/9dcdc967-8e1d-4574-8c5c-677419869dfc)
   - The updated web page successfully deployed.
 
-
+---
+---
 ![image](https://github.com/user-attachments/assets/e61eb3b1-ad69-468d-aba7-7566ba9d8e6a)
 
