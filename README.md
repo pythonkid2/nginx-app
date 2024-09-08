@@ -178,8 +178,235 @@ The created instances have code deploy agent installed and its working fine
 
 3. Review the configuration and click **Create Deployment Group**.
 
+## **Step 5: Adding Code to the Repository**
+
+### **Step 1: Set Up the Web Application**
+
+1. Create a basic NGINX web server application locally:
+   ```
+   mkdir nginx-app
+   cd nginx-app
+   mkdir scripts
+   touch index.html
+   ```
+
+2. Add a simple HTML page in `index.html`:
+   ```
+   <!DOCTYPE html>
+   <html>
+   <head>
+       <title>Welcome to NGINX!</title>
+   </head>
+   <body>
+       <h1>Deployed via CodeDeploy!</h1>
+   </body>
+   </html>
+   ```
+
+3. Create deployment scripts:
+   - **scripts/install_nginx.sh** (installs NGINX):
+     ```
+     #!/bin/bash
+     sudo apt update -y
+     sudo apt install nginx -y
+     ```
+
+
+   - **scripts/start_nginx.sh** (starts NGINX service):
+     ```
+     #!/bin/bash
+     sudo systemctl start nginx
+     ```
+
+   - **scripts/deploy.sh** (deploys the web page):
+     ```
+     #!/bin/bash
+     sudo cp /home/ubuntu/nginx-app/index.html /var/www/html/index.html
+     sudo systemctl restart nginx
+     ```
+
+chmod +x install_nginx.sh deploy.sh start_nginx.sh
+
+4. Push this code to the GitHub repository.
+
+### **1. Create a GitHub Repository**
+
+If a repository has not been created yet, do the following:
+
+1. **Log in to GitHub**:
+   - Go to [GitHub](https://github.com/) and log in.
+
+2. **Create a New Repository**:
+   - Click on the **+** icon in the top-right corner and select **New repository**.
+   - Fill in the details:
+     - **Repository name**: `nginx-app`
+     - **Public/Private**: Public
+   - Click **Create repository**.
+
+![image](https://github.com/user-attachments/assets/5fe13336-f32a-4b18-96ad-ef56f38841be)
+
+### **2. Prepare Your Local Project**
+
+1. **Navigate to the Project Directory**:
+   ```
+   cd /path/to/your/nginx-app
+   ```
+
+2. **Initialize Git**:
+   ```
+   git init
+   ```
+
+3. **Add Your Files**:
+   ```
+   git add .
+   ```
+
+4. **Commit Your Changes**:
+   ```
+   git commit -m "Initial commit of NGINX web application and deployment scripts"
+   ```
+
+### **3. Add Your GitHub Repository as a Remote**
+
+1. **Add Remote Origin**:
+   ```
+   git remote add origin https://github.com/pythonkid2/nginx-app.git
+   ```
+
+### **4. Push Your Code to GitHub**
+
+1. **Push to the Remote Repository** using your username and token:
+   ```
+   git push -u origin main
+   ```
+
+2. **Verify Your Push**:
+   - Go to your GitHub repository page and refresh to ensure that your files have been uploaded.
+
+![image](https://github.com/user-attachments/assets/6a225fff-7661-4874-9a33-3bdf8c8776b4)
+
 ---
 
+## **Step 6: Create and Set Up a Jenkins Server**
+
+1. Launch an Ubuntu EC2 instance with the following specifications:
+   - **Instance Type**: `t2.medium`
+   - **Storage**: 15 GB
+   - **Name**: `jenkins-server`
+
+2. SSH into the EC2 instance:
+
+   ```
+   ssh -i /path/to/your-key.pem ubuntu@<EC2_PUBLIC_IP>
+   ```
+
+![image](https://github.com/user-attachments/assets/4de2dd57-5b26-404b-841a-22d4c530efa4)
+
+3. Install Jenkins on the instance using the instructions from the following URL:
+   [Jenkins Installation Guide for Debian/Ubuntu](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu)
+
+Install jave first
+
+```
+sudo apt install fontconfig openjdk-17-jre -y
+```
+
+4. After Jenkins installation, obtain the initial admin password:
+
+   ```
+   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   ```
+5. Access Jenkins by navigating to `http://<EC2_PUBLIC_IP>:8080` in a web browser.
+
+![image](https://github.com/user-attachments/assets/052fbfb7-739e-49bc-ba1e-7de072a652e4)
+
+![image](https://github.com/user-attachments/assets/d2aa3a66-3c8f-4cd3-a82c-5b469110fa6e)
+![image](https://github.com/user-attachments/assets/8afc9740-7b4a-4b12-95b6-78276815a517)
+
+
+9. Complete the Jenkins setup and ensure it is accessible for further configuration and use.
+---
+
+## **Step 7: Jenkins Configuration and Setup**
+
+1. **Create an S3 Bucket for Jenkins**
+
+   - Navigate to the **S3 Console**.
+   - Click **Create bucket**.
+   - Configure the bucket settings:
+     - **Bucket Name**: Enter a unique name  `my-jenkins-codedeploy-bucket'
+![image](https://github.com/user-attachments/assets/44dc1444-535e-42f0-b08f-8cbf67055052)
+
+   - Click **Create bucket**.
+
+2. **Install Required Plugins in Jenkins**
+
+   - Log in to Jenkins and navigate to **Manage Jenkins** > **Manage Plugins**.
+   - Go to the **Available** tab.
+   - Search for and install the following plugins:
+     - **Pipeline: AWS Steps**
+     - **AWS CodeDeploy**
+     - **Pipeline: Stage View** (if using pipelines)
+![image](https://github.com/user-attachments/assets/85ec7da2-d45f-49d5-b9b1-1391586d0dc2)
+
+3. **Create a Freestyle Project in Jenkins**
+
+   - Go to **New Item** from the Jenkins dashboard.
+   - Enter a name for the project.
+   - Select **Freestyle project** and click **OK**.
+
+![image](https://github.com/user-attachments/assets/2d9a6952-aaa6-4a3b-8e8f-08c8c93433d7)
+
+    - Configure the project:
+
+     ![image](https://github.com/user-attachments/assets/4f84ce9b-6f5d-4442-812b-1016ef0b1968)
+
+     
+     - **Source Code Management**: Choose **Git** and provide your repository URL (`https://github.com/pythonkid2/nginx-app.git`).
+![image](https://github.com/user-attachments/assets/08a3dd8c-2d45-4dae-912c-5be3eb55e340)     
+     - **Build Triggers**: Configure as needed (e.g., GitHub hook trigger for GITScm polling).
+![image](https://github.com/user-attachments/assets/df622f7a-00f8-41e0-bee7-cd4e9ef60fc3)
+     - **Build Environment**: Configure environment settings if required.
+
+Choose post-build-action as deploy an application AWS CodeDeploy 
+![image](https://github.com/user-attachments/assets/31d24ce8-fcb1-43e6-9962-fa637dddd156)
+
+![image](https://github.com/user-attachments/assets/1b4755a9-2469-4789-b247-f10373ce34be)
+
+     
+     - **Build Steps**: Add build steps for deployment using the AWS CodeDeploy plugin.
+
+![image](https://github.com/user-attachments/assets/96974799-e1b1-45a7-a831-f0ced1ad0a69)
+
+# BUILD
+![image](https://github.com/user-attachments/assets/c73ed129-e5fa-4848-ba13-a05b1d6a0865)
+
+
+5. **Add a New User and Add Credentials to Jenkins**
+
+   - Go to **Manage Jenkins** > **Manage Users**.
+   - Click **Create User** and fill in the required details.
+   - Go to **Manage Jenkins** > **Manage Credentials**.
+   - Click **(global)** under **Stores scoped to Jenkins**.
+   - Click **Add Credentials**.
+     - **Kind**: Select **Username with password** or **Secret text** (depending on your credentials type).
+     - Enter your credentials (e.g., AWS access key and secret key).
+   - Save the credentials.
+
+6. **Consider Installing AWS CLI on the Jenkins Instance**
+
+   - Installing AWS CLI on the Jenkins instance is recommended for interacting with AWS services directly from the command line.
+   - To install AWS CLI, follow these steps:
+     ```bash
+     sudo apt update -y
+     sudo apt install awscli -y
+     ```
+
+7. **Verify Configuration**
+
+   - Ensure that Jenkins can communicate with AWS services.
+   - Test the Jenkins project build and deployment to verify that the setup is working correctly.
 
 
 
