@@ -516,3 +516,23 @@ Choose post-build-action as deploy an application AWS CodeDeploy
 ---
 ---
 ![image](https://github.com/user-attachments/assets/e61eb3b1-ad69-468d-aba7-7566ba9d8e6a)
+
+
+### **Problems Encountered**
+
+1. **IAM Role Configuration Issues:**
+   - **Problem:** Encountered permission-related errors during the deployment process. The CodeDeploy agent logs indicated that the EC2 instance lacked the necessary permissions to access required resources.
+   - **Solution:** Upon reviewing the IAM roles assigned to the EC2 instance and CodeDeploy, it was clear that some permissions were missing. Corrected the issue by updating the IAM policies, ensuring that the EC2 instance and CodeDeploy service had the necessary permissions to perform actions like accessing the S3 bucket and deploying the application.
+
+2. **EC2 Launch Template and User Data Configuration:**
+   - **Problem:** Faced issues with EC2 instances not initializing properly due to errors in the user data script. This resulted in the CodeDeploy agent not being installed during the instance setup.
+   - **Solution:** After reviewing the user data script, identified and fixed coding errors, ensuring the correct installation steps for the CodeDeploy agent. The updated script allowed instances to initialize as expected, with the required software installed automatically.
+
+3. **Jenkins Integration:**
+   - **Problem:** Encountered issues integrating Jenkins with AWS CodeDeploy, primarily due to incorrect plugin installation and subsequent permission issues.
+   - **Solution:** Resolved the problem by correctly installing the necessary Jenkins plugins and configuring the Freestyle project with accurate source code management and build triggers. Addressed permission issues by ensuring proper configuration of the AWS CodeDeploy plugin and verifying the credentials and access settings.
+
+4. **Shell Script Permissions:**
+   - **Problem:** Pushed shell scripts without setting the executable permission (`+x`), causing deployment failures due to the scripts not being executable.
+   - **Solution:** Identified the issue and corrected it by updating the permissions on the shell scripts to make them executable, ensuring proper execution during deployment.
+
