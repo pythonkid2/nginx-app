@@ -2,8 +2,54 @@
 <html>
 <head>
     <title>Welcome to NGINX!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            padding: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .content {
+            padding: 50px;
+        }
+        h2 {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        footer {
+            background-color: #333;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <h1>Deployed via CodeDeploy! edit </h1>
+    <header>
+        <h1>Welcome to Your NGINX Server!</h1>
+    </header>
+    <div class="content">
+        <h2>Deployed via CodeDeploy</h2>
+        <p>This project involves setting up a CI/CD pipeline using AWS, Jenkins, and CodeDeploy to deploy a simple NGINX web application. The pipeline ensures that whenever code is pushed to the repository, the web application is automatically deployed to a server, and the deployment is scalable with auto-scaling features to handle varying loads.</p>
+        <p>Developed by: Mathew Joseph</p>
+    </div>
+    <footer>
+        <p>&copy; 2024 Mathew Joseph. All rights reserved.</p>
+    </footer>
 </body>
 </html>
