@@ -379,37 +379,68 @@ Choose post-build-action as deploy an application AWS CodeDeploy
 
 ![image](https://github.com/user-attachments/assets/96974799-e1b1-45a7-a831-f0ced1ad0a69)
 
-# BUILD
-![image](https://github.com/user-attachments/assets/c73ed129-e5fa-4848-ba13-a05b1d6a0865)
+---
 
+## **Step 8: Final Outputs**
 
-5. **Add a New User and Add Credentials to Jenkins**
+### **1. Jenkins Build and Deployment**
 
-   - Go to **Manage Jenkins** > **Manage Users**.
-   - Click **Create User** and fill in the required details.
-   - Go to **Manage Jenkins** > **Manage Credentials**.
-   - Click **(global)** under **Stores scoped to Jenkins**.
-   - Click **Add Credentials**.
-     - **Kind**: Select **Username with password** or **Secret text** (depending on your credentials type).
-     - Enter your credentials (e.g., AWS access key and secret key).
-   - Save the credentials.
+- **Build Process:**
+  - ![Jenkins Build Process](https://github.com/user-attachments/assets/c73ed129-e5fa-4848-ba13-a05b1d6a0865)
+  - Jenkins build process in progress.
 
-6. **Consider Installing AWS CLI on the Jenkins Instance**
+### **2. Deployment Started**
 
-   - Installing AWS CLI on the Jenkins instance is recommended for interacting with AWS services directly from the command line.
-   - To install AWS CLI, follow these steps:
-     ```bash
-     sudo apt update -y
-     sudo apt install awscli -y
-     ```
+- **Deployment Initialization:**
+  - ![Deployment Started 1](https://github.com/user-attachments/assets/76bc9aa4-5032-4fc3-8cc9-e00981a89ad2)
+  - Deployment has been initiated.
+  
+  - ![Deployment Started 2](https://github.com/user-attachments/assets/a76c6ef1-f871-470b-83f9-951282ad6f3b)
+  - Deployment process is underway.
 
-7. **Verify Configuration**
+### **3. Deployed with Load Balancer**
 
-   - Ensure that Jenkins can communicate with AWS services.
-   - Test the Jenkins project build and deployment to verify that the setup is working correctly.
+- **Load Balancer Configuration:**
+  - ![Load Balancer](https://github.com/user-attachments/assets/fbe5802c-97a5-4661-8c13-314036b890d8)
+  - Application deployed with a load balancer.
 
+- **Access URL:**
+  - ![Load Balancer URL](https://github.com/user-attachments/assets/b38c8661-93f2-44a8-9fd3-f60d35935fd3)
+  - Access the application via the load balancer URL: WebApp-AutoScaling-Loadbalancer-1039090491.us-east-2.elb.amazonaws.com.
 
+### **4. Updating HTML Code**
 
+- **Updated HTML Code:**
+  - ![Updated HTML Code](https://github.com/user-attachments/assets/6a30df4a-205a-49ff-8ce8-e371dd5acd6e)
+  - Updated HTML code for the web application.
+
+- **Code Changes:**
+  - ![Code Changes](https://github.com/user-attachments/assets/740d3595-e032-4b08-ba57-882e1350f19e)
+  - Screenshot showing the code changes made.
+
+### **5. Jenkins Triggered**
+
+- **Jenkins Triggered Deployment:**
+  - ![Jenkins Triggered](https://github.com/user-attachments/assets/ebca1df0-786b-4ab8-9616-d26ee70494eb)
+  - Jenkins triggered deployment after code changes.
+
+### **6. Deployment Started**
+
+- **Deployment Process:**
+  - ![Deployment Started](https://github.com/user-attachments/assets/212779db-1da1-4225-be25-46fb2e8b6f08)
+  - Deployment process has started.
+
+### **7. Deployment Events**
+
+- **Deployment Events:**
+  - ![Deployment Events](https://github.com/user-attachments/assets/6ece3926-3cba-46d7-9eed-f1c2b6818e7f)
+  - Deployment events showing progress and status.
+
+### **8. New Page Deployed**
+
+- **Deployed Web Page:**
+  - ![New Page Deployed](https://github.com/user-attachments/assets/9dcdc967-8e1d-4574-8c5c-677419869dfc)
+  - The updated web page successfully deployed.
 
 
 
