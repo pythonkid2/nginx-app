@@ -20,6 +20,8 @@ Setup a CI/CD pipeline using tools of your choice (or preferably the mentioned t
 
 # CI/CD Pipeline Setup with Jenkins, AWS EC2, and CodeDeploy 
 
+![image](https://github.com/user-attachments/assets/af198aa9-da57-4e50-86f8-60a16d313a10)
+
 # Step 1: Create Two IAM Roles in AWS IAM
 
 ## 1. Create a Role for EC2
