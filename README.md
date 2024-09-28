@@ -1,16 +1,15 @@
-# Problem Statement
+### Task Overview:
+Design and implement a CI/CD pipeline that fulfills the following objectives:
 
-### Objective
-Setup a CI/CD pipeline using tools of your choice (or preferably the mentioned tools) to achieve the following goals:
-1. **Deploy on Code Push**: The pipeline should deploy a simple web application to a server whenever code is pushed to a repository.
-2. **Accessibility**: The deployed web application should be accessible via any web browser.
-3. **Scalability**: The deployment should be scalable. When the load increases, the number of servers should automatically scale up and down while ensuring that newly launched servers have the updated code.
+1. **Continuous Deployment**: Ensure that whenever new code is pushed to a version control system, it triggers an automated deployment of a simple web application to a remote server.
+2. **Web Accessibility**: The deployed application must be publicly accessible through any web browser.
+3. **Scalable Infrastructure**: The deployment environment should be capable of auto-scaling. When traffic increases, additional servers should be provisioned, and the updated code should be deployed on all new instances.
 
-### Additional Requirements
-1. The setup should be done using **AWS**, **Jenkins**, and **CodeDeploy**.
-2. **Jenkins** should not be installed on the same server as the one hosting the deployed application.
+### Constraints and Tools:
+1. **AWS**, **Jenkins**, and **CodeDeploy** should be utilized for the setup.
+2. **Jenkins** must be hosted separately from the web application server.
 
-### Tools
+### Preferred Tools:
 - **Jenkins**
 - **Git/Bitbucket**
 - **AWS EC2**
